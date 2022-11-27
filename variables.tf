@@ -8,6 +8,12 @@ variable "name" {
   type        = string
 }
 
+variable "cluster_name" {
+  description = "Name of the cluster"
+  type        = string
+  default     = ""
+}
+
 variable "kubectl_config_context_name" {
   description = "The config context to use when authenticating to the Kubernetes cluster. If empty, defaults to the current context specified in the kubeconfig file."
   type        = string
@@ -17,8 +23,27 @@ variable "kubectl_config_context_name" {
 variable "kubectl_config_path" {
   description = "The path to the config file to use for kubectl. If empty, defaults to $HOME/.kube/config"
   type        = string
-  default     = "~/.kube/config"
+  default     = ""
 }
+
+variable "cluster_endpoint" {
+  description = "The hostname (in form of URI) of the Kubernetes API"
+  type        = string
+  default     = ""
+}
+
+variable "cluster_ca_certificate" {
+  description = "The root certificates bundle for TLS authentication"
+  type        = string
+  default     = ""
+}
+
+variable "exec_plugins" {
+  description = "The Configuration block to use an exec-based credential plugin"
+  type        = map(any)
+  default     = {}
+}
+
 
 # ---------------------------------------------------------------------------------------------------------------------
 # TEST PARAMETERS
